@@ -1,0 +1,49 @@
+body {
+    background-color: rgba(216, 213, 206, 0.5);
+}
+
+#div1 {
+    border: solid;
+    width: 300px;
+    text-align: center;
+    margin: 0 auto;
+    background-color: white;
+}
+
+li {
+    text-align: left;
+}
+
+h1 {
+    text-align: center;
+}
+
+#leftSide {
+    background-color: white;
+    width: 400px;
+    height: 400px;
+    text-align: center;
+    display: inline-block;
+    margin: 0 100px 0 5px;
+}
+
+#rightSide {
+    background-color: white;
+    width: 400px;
+    height: 400px;
+    text-align: center;
+    display: inline-block;
+    margin: 0 5px 0 100px;
+
+    
+}
+
+
+
+.card {
+    background-color: rgba(216, 213, 206, 0.5);
+    text-align: center;
+    padding: 5px 5px;
+    margin: 5px 30px;
+    height: 100px;
+}
