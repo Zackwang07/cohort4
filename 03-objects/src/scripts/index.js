@@ -1,103 +1,74 @@
-import accountFunc from './accounts.js';
+import accountFunc from './account.js';
 
-// details
-accountList.addEventListener('click', (e) => {
-    if (e.target.className == 'btnSelect') {
-        let selectedName = e.target.parentElement.children[0].textContent;
-        let selectedBalance = e.target.parentElement.children[1].textContent;
 
-        accountName.textContent = selectedName;
-        accountBalance.textContent = selectedBalance;
-
-        const selectedAccoount = new account(selectedName, selectedBalance);
-        let amount;
-        const btnDeposit = document.getElementById("btnDeposit");
-        const btnWithdraw = document.getElementById("btnWithdraw");
-
-        btnDeposit.addEventListener("click", function(){
-            amount = document.getElementById("amount").value;
-            selectedAccoount.deposit(amount);
-            document.getElementById("amount").value = "";
-            messageDetails.textContent = "Money has been deposited.";
-            accountBalance.textContent = selectedAccoount.currentBalance;
-            e.target.parentElement.children[1].textContent = selectedAccoount.currentBalance;
-        });
-
-        btnWithdraw.addEventListener("click", () => {
-            amount = document.getElementById("amount").value;
-            selectedAccoount.withdraw(amount);
-            document.getElementById("amount").value = "";
-            messageDetails.textContent = "Money has been withdrawed.";
-            accountBalance.textContent = selectedAccoount.currentBalance;
-            e.target.parentElement.children[1].textContent = selectedAccoount.currentBalance;
-        });
-    }
-})
 
 
 // create an account
+let accounts = new accountFunc.accountController();
 
 const btnCreate = document.getElementById("btnCreate");
 btnCreate.addEventListener("click", () => {
-    const accountList = document.createElement('div');
-    accountList.className = 'eachAccount';
-
-    let accountName = document.createElement('div');
-    let newName = document.getElementById("newName").value;
-    accountName.appendChild(document.createTextNode(newName));
-    accountName.className = 'accountName';
-
-    let accountBalance = document.createElement('div');
-    let newBalance = document.getElementById("newBalace").value;
-    accountBalance.appendChild(document.createTextNode(newBalance));
-    accountBalance.className = 'accountBalance';
-
-    let btnSelect = document.createElement('button');
-    btnSelect.appendChild(document.createTextNode('Select'));
-    btnSelect.className = 'btnSelect';
-
-    const btnDelete = document.createElement('button');
-    btnDelete.appendChild(document.createTextNode('Delete'));
-    btnDelete.className = 'btnDelete'
-
-    accountList.appendChild(accountName);
-    accountList.appendChild(accountBalance);
-    accountList.appendChild(btnSelect);
-    accountList.appendChild(btnDelete);
-
-    accounts.appendChild(accountList);
+    // create card
+    let newAccount = new accountFunc.account(document.getElementById('newName').value, document.getElementById('newBalance').value)
+    divAccounts.appendChild(newAccount.createCard());
+    
     document.getElementById("newName").value = "";
-    document.getElementById("newBalace").value = "";
+    document.getElementById("newBalance").value = "";
 
+    // add to array
+    accounts.addAccount(newAccount);
+    console.log(accounts);
 });
 
 // delete an account
 
-accountList.addEventListener('click', (e) => {
-    if (e.target.className == 'btnDelete') {
+divAccounts.addEventListener('click', (e) => {
+    
+    // delete card
+    if (e.target.textContent == 'Delete' && e.target.tagName == 'BUTTON') {
         e.target.parentElement.remove();
     }
 
+    // remove from array
+    
+    accounts.removeAccount(e.target.parentElement.children[0].textContent)
+    // console.log(e.target.parentElement.children[0].textContent);
+    // console.log(e.target.parentElement.children[1].textContent);
+    console.log(accounts);
+    
 });
 
-// accountController
+// details
+// accountList.addEventListener('click', (e) => {
+//     if (e.target.className == 'btnSelect') {
+//         let selectedName = e.target.parentElement.children[0].textContent;
+//         let selectedBalance = e.target.parentElement.children[1].textContent;
 
-// const btnLowest = document.getElementById('btnLowest');
-// const btnHighest = document.getElementById('btnHighest');
-// const btnTotal = document.getElementById('btnTotal');
+//         accountName.textContent = selectedName;
+//         accountBalance.textContent = selectedBalance;
 
-// btnLowest.addEventListener('click',()=>{
-//     let accounts = document.getElementsByClassName('eachAccount');
-//     console.log(accounts);
-//     console.log(accounts[0].children[1].textContent);
+//         const selectedAccoount = new account(selectedName, selectedBalance);
+//         let amount;
+//         const btnDeposit = document.getElementById("btnDeposit");
+//         const btnWithdraw = document.getElementById("btnWithdraw");
 
-//     let lowest = accounts[0];
-//     accounts.forEach(value => {
-//         if(parseInt(value.children[1].textContent)<parseInt(lowest.children[1].textContent)){
-//             lowest = value
-//         }
-//     });
-//     console.log(lowest);
+//         btnDeposit.addEventListener("click", function(){
+//             amount = document.getElementById("amount").value;
+//             selectedAccoount.deposit(amount);
+//             document.getElementById("amount").value = "";
+//             messageDetails.textContent = "Money has been deposited.";
+//             accountBalance.textContent = selectedAccoount.currentBalance;
+//             e.target.parentElement.children[1].textContent = selectedAccoount.currentBalance;
+//         });
 
+//         btnWithdraw.addEventListener("click", () => {
+//             amount = document.getElementById("amount").value;
+//             selectedAccoount.withdraw(amount);
+//             document.getElementById("amount").value = "";
+//             messageDetails.textContent = "Money has been withdrawed.";
+//             accountBalance.textContent = selectedAccoount.currentBalance;
+//             e.target.parentElement.children[1].textContent = selectedAccoount.currentBalance;
+//         });
+//     }
+// })
 
-// });
