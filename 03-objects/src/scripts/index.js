@@ -115,3 +115,32 @@ btnWithdraw.addEventListener("click", () => {
     resetFields();
     updateSummary();
 });
+
+
+//920 Fetch API
+function showDelayProblem(){
+    console.log('One');
+    setTimeout(()=>{
+        console.log('Two');  
+    }, 1*1000);
+    console.log('Three');  
+}
+// showDelayProblem();
+
+async function showDelaySolution(){
+    try{
+        console.log('One');
+        const value = await
+        new Promise((resolve,reject) => setTimeout(()=>resolve('Two'), 1*1000));
+        console.log(value);
+        console.log('Three');
+    }catch(error){
+        console.log(error);
+        
+    }
+}
+
+// console.log('Before');
+// showDelaySolution();
+// console.log('After');
+
