@@ -52,6 +52,9 @@ test ('sorting accounts', ()=>{
 
     accounts.removeAccount('chequing');
     console.log(accounts);
+
+    console.log(accounts.selectAccount('RESP'));
+    
     
     expect(accounts.accountList.length).toBe(2);
     expect(accounts.lowestAccount().currentBalance).toBe(1000);

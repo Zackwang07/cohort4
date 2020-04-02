@@ -10,7 +10,7 @@ class account {
     }
 
     withdraw(amount) {
-        return this.currentBalance = this.currentBalance - amount;
+        return this.currentBalance = parseInt(this.currentBalance) - parseInt(amount);
     }
 
     balance() {
@@ -59,6 +59,20 @@ class accountController {
     removeAccount(name){
         let index = this.accountList.findIndex(value => value.accountName == name);
         this.accountList.splice(index,1)
+    }
+
+    createCardsDiv(){
+        const group = document.createElement('div')
+        this.accountList.forEach(eachAccount =>{
+            const divCard = new account(eachAccount.accountName, eachAccount.currentBalance).createCard();
+            group.appendChild(divCard);
+        });
+        return group;
+    }
+
+    selectAccount(name){
+        let index = this.accountList.findIndex(value => value.accountName == name);
+        return this.accountList[index];
     }
    
 
