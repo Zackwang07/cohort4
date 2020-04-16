@@ -13,12 +13,8 @@ class account {
         return this.currentBalance = parseInt(this.currentBalance) - parseInt(amount);
     }
 
-    balance() {
-        return `The current balance of ${this.accountName} is ${this.currentBalance}`;
-    }
-
     createCard(){
-
+// move to accountController
     // accountDiv
         const newAccount = document.createElement('div');
 

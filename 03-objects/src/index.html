@@ -11,9 +11,20 @@
 <body>
     <h1>Account</h1>
 
+<div class='box'>
+    <div class="List">
+        <div>
+            <p>Accounts List</p>
+        </div>
+        <div id="divAccounts"></div>
+        <div id='summary'>
+            <div>Lowest account:   <span id='spanLowest'></span></div>
+            <div>Highst account:  <span id='spanHighest'></span></div>
+            <div>Total Balance:   <span id='spanTotal'></span></div>
+        </div>
+    </div>
 
-
-    <div id="createAccount">
+    <div class="create">
         <div>Account Name
             <input id="newName" type="text">
         </div>
@@ -23,19 +34,9 @@
         <button id="btnCreate">Create</button>
     </div>
 
-    <div id="accountList">
-        <div>
-            <p>Accounts List</p>
-        </div>
-        <div id="divAccounts"></div>
-        <div>
-            <div>Lowest account:   <span id='spanLowest'></span></div>
-            <div>Highst account:  <span id='spanHighest'></span></div>
-            <div>Total Balance:   <span id='spanTotal'></span></div>
-        </div>
-    </div>
+    
 
-    <div id="accountTransition">
+    <div class="details">
 
         <div id="divAccountName"></div>
         <div id="divAccountBalance"></div><br>
@@ -46,7 +47,42 @@
         <div id="messageDetails"></div><br>
 
     </div>
+</div>
+    
+<h1>Community and City</h1>
+<div class='box'>
+    <div class="List">
+        <p>City List</p> 
+        <div id="divCities"></div>
+        <div id='citySummary'>
+            <div>Most Northern City:   <span id='spanNorthern'></span></div>
+            <div>Most Southern City:  <span id='spanSouthern'></span></div>
+            <div>Total Population:   <span id='spanTotalPopulation'></span></div>
+        </div>
+    </div>
 
+    <div class="create">
+        <input id="newCityName" type="text", placeholder="Enter City Name"><br>
+        <input id="newLatitude" type="text", placeholder="Enter Latitude"><br>
+        <input id="newLongitude" type="text", placeholder="Enter Longitude"><br>
+        <input id="newPopulation" type="text", placeholder="Enter Population"><br>
+        <button id='btnAddCity'>Add a City</button>
+    </div>
+
+    <div class="details">
+        <input id="inputMove" type="text" placeholder="Enter a Number"><br>
+        <button id="btnMoveIn">Move in</button>
+        <button id="btnMoveOut">Move Out</button>
+        <div id="divShow">
+            <div>Name:   <span id='spanName'></span></div>
+            <div>Latitude:  <span id='spanLatitude'></span></div>
+            <div>Longitude:   <span id='spanLongitude'></span></div>
+            <div>Population:   <span id='spanPopulation'></span></div>
+            <div>Size:   <span id='spanSize'></span></div>
+        </div>
+    </div>
+    
+</div>
 
 
 
