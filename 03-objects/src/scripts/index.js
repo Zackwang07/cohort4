@@ -1,5 +1,6 @@
 import accountFunc from './account.js';
-import { city, community } from './city.js';
+import { City, Community } from './city.js';
+import fetchFunc from './fetch.js';
 
 
 // create an account
@@ -116,22 +117,45 @@ btnWithdraw.addEventListener("click", () => {
 // --------Community and City---------
 
 // Add a city
-let cities = new community();
+let cities = new Community();
+let k = 1;
 
-btnAddCity.addEventListener('click', () => {
+window.addEventListener("DOMContentLoaded", async ()=>{
+    let data = await fetchFunc.postData('http://localhost:5000/all');
+    console.log(data);
+    if (data.length > 0){
+        data.forEach(value =>{
+            let loadedCity = new City(value.city.name, value.city.latitude, value.city.longitude, value.city.population, value.city.key);
+            cities.addCity(loadedCity);
+        });
+        console.log(cities.arrayCity);
+        k = data[data.length - 1].key + 1;
+    };
+    
+    
+    updateCityList();
+    updateCitySummary();
+
+})
+
+btnAddCity.addEventListener('click', async () => {
     const newName = document.getElementById("newCityName").value;
     const newLatitude = document.getElementById("newLatitude").value;
     const newLongitude = document.getElementById("newLongitude").value;
     const newPopulation = parseInt(document.getElementById("newPopulation").value);
-    let newCity = new city(newName, newLatitude, newLongitude, newPopulation);
+    let newCity = new City(newName, newLatitude, newLongitude, newPopulation, k);
     cities.addCity(newCity);
+    console.log(cities.arrayCity);
     
+    let data = await fetchFunc.postData('http://localhost:5000/add', {key: k, city: cities.arrayCity[cities.arrayCity.length - 1]});
+    k ++;
+    console.log(data.status);
     updateCityList();
     resetCityInput();
     updateCitySummary();
 });
 
-divCities.addEventListener("click", e => {
+divCities.addEventListener("click", async (e) => {
     if (e.target.textContent == "Show") {
         let selectedCity = cities.selectCity(e.target.parentElement.children[0].textContent)
         showDetails(selectedCity);
@@ -139,26 +163,34 @@ divCities.addEventListener("click", e => {
         resetCityInput();
 
     } else if (e.target.textContent == "Delete") {
+        let selectedCity = cities.selectCity(e.target.parentElement.children[0].textContent)
+        let data = await fetchFunc.postData('http://localhost:5000/delete', {key:selectedCity.key});
         cities.deleteCity(e.target.parentElement.children[0].textContent);
-
+ 
+        console.log(cities.arrayCity);
+        
         updateCityList();
         resetCityInput();
         updateCitySummary();
     }
 });
 
-btnMoveIn.addEventListener("click", () => {
-    let selectedCity = cities.selectCity(spanName.textContent);    
+btnMoveIn.addEventListener("click", async () => {
+    let selectedCity = cities.selectCity(spanName.textContent);
     selectedCity.movedIn(document.getElementById("inputMove").value);
+    let data = await fetchFunc.postData('http://localhost:5000/update', {key:selectedCity.key, city: selectedCity});
+
     showDetails(selectedCity);
 
     resetCityInput();
     updateCitySummary();
 });
 
-btnMoveOut.addEventListener("click", () => {
+btnMoveOut.addEventListener("click", async () => {
     let selectedCity = cities.selectCity(spanName.textContent);    
     selectedCity.movedOut(document.getElementById("inputMove").value);
+    let data = await fetchFunc.postData('http://localhost:5000/update', {key:selectedCity.key, city: selectedCity});    
+
     showDetails(selectedCity);
 
     resetCityInput();
@@ -169,7 +201,7 @@ btnMoveOut.addEventListener("click", () => {
 function updateCityList() {
     divCities.textContent = "";
     cities.arrayCity.forEach(city => {
-        divCities.appendChild(city.createCityCard())
+        divCities.appendChild(cities.createCityCard(city.name))
     });
 }
 
@@ -200,3 +232,4 @@ function updateCitySummary(){
         spanTotalPopulation.textContent = cities.getPopulation();
     }
 }
+

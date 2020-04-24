@@ -1,17 +1,14 @@
-export class city {
-    constructor(name, latitude, longitude, population){
+export class City {
+    constructor(name, latitude, longitude, population, key){
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
         this.population = population;
+        this.key = key;
     }
 
     show(){
-       return `City: ${this.name} 
-       Latitude: ${this.latitude}
-       Longitude: ${this.longitude}
-       Population: ${this.population}
-       Size: ${this.howBig()}`;
+       return `${this.name}, ${this.latitude}, ${this.longitude}, ${this.population}`;
     }
 
     movedIn(num){
@@ -39,28 +36,9 @@ export class city {
             return 'Hamlet'
         }
     }
-
-    createCityCard(){
-        const cityCard = document.createElement("div");
-
-        const cityName = document.createElement("div");
-        cityName.appendChild(document.createTextNode(this.name));
-
-        const btnShow = document.createElement("button");
-        btnShow.appendChild(document.createTextNode("Show"));
-
-        const btnDelete = document.createElement("button");
-        btnDelete.appendChild(document.createTextNode("Delete"));
-
-        cityCard.appendChild(cityName);
-        cityCard.appendChild(btnShow);
-        cityCard.appendChild(btnDelete);
-
-        return cityCard;
-    }
 }
 
-export class community {
+export class Community {
     constructor(){
         this.arrayCity = [];
     }
@@ -113,5 +91,24 @@ export class community {
     selectCity(name){
         const index = this.arrayCity.findIndex(city => city.name == name);
         return this.arrayCity[index];
+    }
+
+    createCityCard(name){
+        const cityCard = document.createElement("div");
+
+        const cityName = document.createElement("div");
+        cityName.appendChild(document.createTextNode(name));
+
+        const btnShow = document.createElement("button");
+        btnShow.appendChild(document.createTextNode("Show"));
+
+        const btnDelete = document.createElement("button");
+        btnDelete.appendChild(document.createTextNode("Delete"));
+
+        cityCard.appendChild(cityName);
+        cityCard.appendChild(btnShow);
+        cityCard.appendChild(btnDelete);
+
+        return cityCard;
     }
 }
