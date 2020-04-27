@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import MyComponent from './components/MyComponent.js'
+import MyComponent from './components/MyComponent.js';
+import EvenComponent from './components/EvenComponent.js';
+import OddComponent from './components/OddComponent.js';
 
 class App extends Component {
-  constructor(){
+  constructor() {
     super();
     this.counter = 21;
     this.state = {
@@ -12,16 +14,24 @@ class App extends Component {
     };
   }
 
-  onPushMe = () =>{
+  onPushMe = () => {
     console.log("you pushed me");
-    this.counter ++;
+    this.counter++;
     console.log(this.counter);
     this.setState({
       myState: "now:" + this.counter
     });
   }
 
-  render(){
+  show = () => {
+    if (this.counter % 2 === 0) {
+      return <EvenComponent />
+    } else {
+      return <OddComponent />
+    }
+  }
+
+  render() {
     return (
       <div className="App">
         <header className="App-header">
@@ -39,12 +49,14 @@ class App extends Component {
           >
             Learn React
           </a>
-          <MyComponent whatToSay = {this.onPushMe}/>
+          <MyComponent whatToSay={this.onPushMe} />
+          {this.show()}
+      
         </header>
       </div>
     );
   }
-  
+
 }
 
 export default App;
