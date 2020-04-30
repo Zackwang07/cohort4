@@ -1,9 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
-import SuperMarioSVG from './components/superMario';
-import NarutoSVG from './components/naruto';
-import IronManSVG from './components/ironMan';
-import DarthVaderSVG from './components/darthVader';
+import superMario from './super-mario.svg';
+import naruto from './naruto.svg';
+import ironMan from './iron-man.svg';
+import darthVader from './darth-vader.svg';
 import './App.css';
 
 class App extends React.Component {
@@ -13,10 +13,10 @@ class App extends React.Component {
     return (
       <div className="App" >
         <div className="iconBox" >
-          <SuperMarioSVG id="iconSuperMario" className="icons"/>
-          <NarutoSVG id="iconNaruto" className="icons"/>
-          <IronManSVG id="iconIronMan" className="icons"/>
-          <DarthVaderSVG id="icondarthVader" className="icons" />
+          <img src={superMario} id="iconSuperMario" alt="icon" className="icons"/>
+          <img src={naruto} id="iconNaruto" alt="icon" className="icons"/>
+          <img src={ironMan} id="iconIronMan" alt="icon" className="icons"/>
+          <img src={darthVader} id="icondarthVader" alt="icon" className="icons"/>
         </div>
 
 
