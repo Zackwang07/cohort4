@@ -2,10 +2,37 @@
   text-align: center;
 }
 
-.App-logo {
+.icons:hover path{
+  fill: rgb(23, 192, 235)
+}
+
+.App-logo{
   height: 40vmin;
   pointer-events: none;
 }
+
+/* @media (prefers-reduced-motion: no-preference) {
+  .icons {
+    animation: App-logo-spin infinite 20s linear;
+  }
+} */
+
+@media (prefers-reduced-motion: no-preference) {
+  #iconSuperMario {
+    animation: App-logo-spin infinite 1s linear;
+  }
+  #iconNaruto {
+    animation: App-logo-spin infinite 5s linear reverse;
+  }
+  #iconIronMan {
+    animation: App-logo-spin infinite 5s linear;
+  }
+  #icondarthVader {
+    animation: App-logo-spin infinite 30s linear;
+  }
+}
+
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -18,30 +45,6 @@
   display: flex;
   justify-content: space-around;
 }
-
-.icons:hover {
-  filter: invert(.5) sepia(1) saturate(5) hue-rotate(175deg);
-}
-
-/* .icons:hover path{
-  fill: rgb(23, 192, 235)
-} */
-
-@media (prefers-reduced-motion: no-preference) {
-  #iconSuperMario {
-    animation: App-logo-spin infinite 20s linear reverse;
-  }
-  #iconNaruto {
-    animation: App-logo-spin infinite 5s linear ;
-  }
-  #iconIronMan {
-    animation: App-logo-spin infinite 20s linear;
-  }
-  #icondarthVader {
-    animation: App-logo-spin infinite 2s linear alternate-reverse;
-  }
-}
-
 
 .App-header {
   background-color: #282c34;
