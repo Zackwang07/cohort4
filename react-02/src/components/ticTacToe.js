@@ -11,32 +11,26 @@ class Board extends React.Component {
 
     renderSquare(i) {
         return <Square value={this.props.squares[i]}
-            onClick={() => this.props.onClick(i)} 
-            // location={this.location(i)}
-            />;
+            onClick={() => this.props.onClick(i)}
+        // location={this.location(i)}
+        />;
     }
 
-    
+
 
     render() {
+        const boardSize = 3;
+        let squares = [];
+        for (let i = 0; i < boardSize; ++i) {
+            let row = [];
+            for (let j = 0; j < boardSize; ++j) {
+                row.push(this.renderSquare(i * boardSize + j));
+            }
+            squares.push(<div key={i} className="board-row">{row}</div>);
+        }
+
         return (
-            <div>
-                <div className="board-row">
-                    {this.renderSquare(0)}
-                    {this.renderSquare(1)}
-                    {this.renderSquare(2)}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(3)}
-                    {this.renderSquare(4)}
-                    {this.renderSquare(5)}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(6)}
-                    {this.renderSquare(7)}
-                    {this.renderSquare(8)}
-                </div>
-            </div>
+            <div>{squares}</div>
         );
     }
 }
@@ -51,6 +45,8 @@ class Game extends React.Component {
             stepNumber: 0,
             xIsNext: true,
             selected: null,
+            isReversed: false,
+
         }
     }
 
@@ -63,30 +59,36 @@ class Game extends React.Component {
         }
         squares[i] = this.state.xIsNext ? 'X' : 'O';
         this.setState({
-            history: history.concat([{squares: squares, lastMove: this.location(i)}]),
+            history: history.concat([{ squares: squares, lastMove: this.location(i) }]),
             stepNumber: history.length,
             xIsNext: !this.state.xIsNext,
         })
     }
 
-    location(i){
-        if (i===0) { return 'col:1 row:1'}else
-        if (i===1) { return 'col:2 row:1'}else
-        if (i===2) { return 'col:3 row:1'}else
-        if (i===3) { return 'col:1 row:2'}else
-        if (i===4) { return 'col:2 row:2'}else
-        if (i===5) { return 'col:3 row:2'}else
-        if (i===6) { return 'col:1 row:3'}else
-        if (i===7) { return 'col:2 row:3'}else
-        if (i===8) { return 'col:3 row:3'}
+    location(i) {
+        if (i === 0) { return 'col:1 row:1' } else
+            if (i === 1) { return 'col:2 row:1' } else
+                if (i === 2) { return 'col:3 row:1' } else
+                    if (i === 3) { return 'col:1 row:2' } else
+                        if (i === 4) { return 'col:2 row:2' } else
+                            if (i === 5) { return 'col:3 row:2' } else
+                                if (i === 6) { return 'col:1 row:3' } else
+                                    if (i === 7) { return 'col:2 row:3' } else
+                                        if (i === 8) { return 'col:3 row:3' }
     }
 
-    jumpTo(move){
-        
+    jumpTo(move) {
+
         this.setState({
             stepNumber: move,
-            xIsNext: (move%2) === 0,
+            xIsNext: (move % 2) === 0,
             selected: move,
+        })
+    }
+
+    sortOrder() {
+        this.setState({
+            isReversed: !this.state.isReversed
         })
     }
 
@@ -95,16 +97,16 @@ class Game extends React.Component {
         const current = history[this.state.stepNumber];
         const winner = calculateWinner(current.squares);
 
-        const moves = history.map((step, move, )=>{
-             
-            const desc = move ? 'Go to move #' + move + ' ' + step.lastMove: 'Go to game start';
-            
+        const moves = history.map((step, move, ) => {
+
+            const desc = move ? 'Go to move #' + move + ' ' + step.lastMove : 'Go to game start';
+
             return (
-                <li key={move} onClick={this.boldBtn}>
-                    <button onClick={()=>this.jumpTo(move)}
-                    style={{'fontWeight': this.state.selected === move ? 'bold' : 'normal'}}
+                <li key={move}>
+                    <button onClick={() => this.jumpTo(move)}
+                        style={{ 'fontWeight': this.state.selected === move ? 'bold' : 'normal' }}
                     >
-                    {desc}
+                        {desc}
                     </button>
                 </li>
             )
@@ -116,6 +118,7 @@ class Game extends React.Component {
         } else {
             status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
         }
+
         return (
             <div className="game">
                 <div className="game-board">
@@ -125,7 +128,8 @@ class Game extends React.Component {
                 </div>
                 <div className="game-info">
                     <div>{status}</div>
-                    <ol>{moves}</ol>
+                    <button onClick={() => this.sortOrder()}>toggle</button>
+                    {this.state.isReversed ? <ol reversed>{moves.reverse()}</ol> : <ol>{moves}</ol>}
                 </div>
             </div>
         );
@@ -153,3 +157,6 @@ function calculateWinner(squares) {
 }
 
 export default Game;
+
+
+// https://github.com/kelanwu/react-tic-tac-toe
