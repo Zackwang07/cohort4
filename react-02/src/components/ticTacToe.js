@@ -159,4 +159,3 @@ function calculateWinner(squares) {
 export default Game;
 
 
-// https://github.com/kelanwu/react-tic-tac-toe
