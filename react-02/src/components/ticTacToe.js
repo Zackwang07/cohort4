@@ -15,7 +15,7 @@ class Board extends React.Component {
         
         return <Square value={this.props.squares[i]}
             onClick={() => this.props.onClick(i)}
-            highlight = {this.props.winLine? this.props.winLine.includes(i):false}
+            highlight = {this.props.winLine && this.props.winLine.includes(i)}
         />;
     }
 
@@ -47,7 +47,6 @@ class Game extends React.Component {
             ],
             stepNumber: 0,
             xIsNext: true,
-            selected: null,
             isReversed: false,
             
         }
@@ -85,7 +84,6 @@ class Game extends React.Component {
         this.setState({
             stepNumber: move,
             xIsNext: (move % 2) === 0,
-            selected: move,
         })
     }
 
@@ -109,14 +107,14 @@ class Game extends React.Component {
         const current = history[this.state.stepNumber];
         const win = calculateWinner(current.squares);
 
-        const moves = history.map((step, move, ) => {
+        const moves = history.map((step, move) => {
 
             const desc = move ? 'Go to move #' + move + ' ' + step.lastMove : 'Go to game start';
 
             return (
                 <li key={move}>
                     <button onClick={() => this.jumpTo(move)}
-                        style={{ 'fontWeight': this.state.selected === move ? 'bold' : 'normal' }}
+                        style={{ 'fontWeight': this.state.stepNumber === move ? 'bold' : 'normal' }}
                     >
                         {desc}
                     </button>
@@ -143,7 +141,7 @@ class Game extends React.Component {
                     <Board
                         squares={current.squares}
                         onClick={(i) => this.handleClick(i)} 
-                        winLine={win.line? win.line:null}/>
+                        winLine={win.line&&win.line}/>
                 </div>
                 <div className="game-info">
                     <div>{status}</div>
