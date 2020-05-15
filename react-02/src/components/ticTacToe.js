@@ -93,15 +93,6 @@ class Game extends React.Component {
         })
     }
 
-    ifDraw(squares){
-        if(squares.includes(null)){
-            return false
-        }else{
-            return true
-        }
-        
-    }
-
     render() {
         const history = this.state.history
         const current = history[this.state.stepNumber];
@@ -127,7 +118,7 @@ class Game extends React.Component {
         if (win.winner) {
             status = 'Winner: ' + win.winner;
            
-        } else if(this.ifDraw(current.squares)){
+        } else if(!current.squares.includes(null)){
             status = 'Draw'
         }
         
@@ -141,7 +132,7 @@ class Game extends React.Component {
                     <Board
                         squares={current.squares}
                         onClick={(i) => this.handleClick(i)} 
-                        winLine={win.line&&win.line}/>
+                        winLine={win&&win.line}/>
                 </div>
                 <div className="game-info">
                     <div>{status}</div>
