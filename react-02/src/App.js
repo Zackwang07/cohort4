@@ -5,6 +5,7 @@ import IronManSVG from './components/ironMan';
 import DarthVaderSVG from './components/darthVader';
 import Starter from './components/starter';
 import Game from './components/ticTacToe';
+import Account from './components/account';
 import './App.css';
 
 class App extends React.Component {
@@ -30,6 +31,9 @@ class App extends React.Component {
     }
     if (this.state.display === "iconNaruto"){
       return <Game/>
+    }
+    if (this.state.display === "iconIronMan"){
+      return <Account/>
     }
   }
 

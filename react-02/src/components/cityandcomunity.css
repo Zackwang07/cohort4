@@ -1,0 +1,13 @@
+#createCity {
+    border: 1px solid black;
+    text-align: center;  
+    margin: 1em; 
+    padding: 1em;
+}
+
+#cityList {
+    border: 1px solid black;
+    text-align: center;  
+    margin: 1em; 
+    padding: 1em;
+}
