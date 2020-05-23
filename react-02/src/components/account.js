@@ -4,6 +4,25 @@ import './account.css';
 class AccountList extends React.Component {
 
     render() {
+        let lowest = this.props.accounts[0];
+        this.props.accounts.forEach(account => {
+            if (parseInt(account.accountBalance) < parseInt(lowest.accountBalance)) {
+                lowest = account;
+            }
+        });
+
+        let highest = this.props.accounts[0];
+        this.props.accounts.forEach(account => {
+            if (parseInt(account.accountBalance) > parseInt(highest.accountBalance)) {
+                highest = account;
+            }
+        });
+
+        let sum = 0;
+        this.props.accounts.forEach(account =>{
+            sum += parseInt(account.accountBalance);
+        })
+
         const list = this.props.accounts.map((account) => {
             return (
                 <li key={account.key}>
@@ -21,9 +40,9 @@ class AccountList extends React.Component {
                 </div>
                 <ul>{list}</ul>
                 <div>
-                    <div>Lowest account:   <span id='spanLowest'></span></div>
-                    <div>Highst account:  <span id='spanHighest'></span></div>
-                    <div>Total Balance:   <span id='spanTotal'></span></div>
+                    <div>Lowest account:   <span id='spanLowest'>{lowest && lowest.accountName}</span></div>
+                    <div>Highest account:  <span id='spanHighest'>{highest && highest.accountName}</span></div>
+                    <div>Total Balance:   <span id='spanTotal'>{sum}</span></div>
                 </div>
             </div>
         )
@@ -45,12 +64,12 @@ class CreateAccount extends React.Component {
 }
 
 class Transaction extends React.Component {
-    render() {  
+    render() {
         return (
             <div className="details">
                 <div>Account: {this.props.current && this.props.current.accountName}</div>
                 <div>Balance: {this.props.current && this.props.current.accountBalance}</div><br />
-                <input id="amount" type="text" onChange={this.props.onChange}/><br />
+                <input id="amount" type="text" onChange={this.props.onChange} /><br />
                 <button id="btnDeposit" onClick={this.props.onClick}>Deposit</button>
                 <button id="btnWithdrawl" onClick={this.props.onClick}>Withdrawl</button>
                 <div></div><br />
@@ -68,7 +87,6 @@ class Account extends React.Component {
             accounts: [],
             current: null,
             amount: null,
-            summary: {lowest: null, highest: null, total: null}
         }
     }
 
@@ -76,7 +94,7 @@ class Account extends React.Component {
     handleChange = (e) => {
         let name = e.target.id;
         let value = e.target.value;
-        
+
         this.setState({
             [name]: value
         })
@@ -94,15 +112,15 @@ class Account extends React.Component {
                 accounts: this.state.accounts.concat([newAcount])
             })
         }
-        if (e.target.id === "btnSelect") {            
+        if (e.target.id === "btnSelect") {
             this.setState({
-                current: this.state.accounts.find((account)=> account.accountName === e.target.parentElement.children[0].textContent)
-            })  
+                current: this.state.accounts.find((account) => account.accountName === e.target.parentElement.children[0].textContent)
+            })
         }
         if (e.target.id === "btnDelete") {
             this.setState({
                 accounts: this.state.accounts.filter((account) => account.accountName !== e.target.parentElement.children[0].textContent)
-            }) 
+            })
         }
         if (e.target.id === "btnDeposit") {
             const newAccount = this.state.current;
@@ -110,12 +128,12 @@ class Account extends React.Component {
 
             this.setState({
                 current: newAccount,
-            })   
+            })
         }
         if (e.target.id === "btnWithdrawl") {
             const newAccount = this.state.current;
             newAccount.accountBalance = parseInt(newAccount.accountBalance) - parseInt(this.state.amount);
-            
+
             this.setState({
                 current: newAccount,
             })
@@ -132,9 +150,9 @@ class Account extends React.Component {
                         onChange={this.handleChange}
                         newName={this.state.newName}
                         newBalance={this.state.newBalance}
-                        
+
                     />
-                    <Transaction current={this.state.current} onChange={this.handleChange}/>
+                    <Transaction current={this.state.current} onChange={this.handleChange} />
                 </div>
 
             </div>
@@ -143,10 +161,5 @@ class Account extends React.Component {
 
     }
 }
-
-
-
-
-
 
 export default Account;
