@@ -7,6 +7,7 @@ import Starter from './components/starter';
 import Game from './components/ticTacToe';
 import Account from './components/account';
 import './App.css';
+import CityAndCommunity from './components/cityandcommunity';
 
 class App extends React.Component {
   constructor() {
@@ -34,6 +35,9 @@ class App extends React.Component {
     }
     if (this.state.display === "iconIronMan"){
       return <Account/>
+    }
+    if (this.state.display === "icondarthVader"){
+      return <CityAndCommunity/>
     }
   }
 
