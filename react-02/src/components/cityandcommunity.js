@@ -2,17 +2,28 @@ import React from 'react';
 import './cityandcommunity.css';
 import { City, Community } from './business/city.js';
 import fetchFunc from './business/fetch.js';
+import * as cityExamples from './business/cityExamples.json';
+
 
 class CreateCity extends React.Component {
     render() {
-
+        
+        let name, lat, long, pop;
+        if(this.props.inputData){
+            name = this.props.inputData[0];
+            lat = this.props.inputData[1];
+            long = this.props.inputData[2];
+            pop = this.props.inputData[3];
+        }
         return (
             <div className="create">
-                <input id="newCityName" type="text" placeholder="Enter Name" onChange={this.props.onChange} /><br />
-                <input id="newLatitude" type="text" placeholder="Enter Latitude" onChange={this.props.onChange} /><br />
-                <input id="newLongitude" type="text" placeholder="Enter Longitude" onChange={this.props.onChange} /><br />
-                <input id="newPopulation" type="text" placeholder="Enter Population" onChange={this.props.onChange} /><br />
+                <input id="newCityName" type="text" placeholder="Enter Name" onChange={this.props.onChange} value={name}/><br />
+                <input id="newLatitude" type="text" placeholder="Enter Latitude" onChange={this.props.onChange} value={lat}/><br />
+                <input id="newLongitude" type="text" placeholder="Enter Longitude" onChange={this.props.onChange} value={long}/><br />
+                <input id="newPopulation" type="text" placeholder="Enter Population" onChange={this.props.onChange} value={pop}/><br />
+                <button id='btnrandom' onClick={this.props.onRandom}>Random Fill</button>
                 <button id='btnAddCity' onClick={this.props.onClick}>Add a City</button>
+                
             </div>
         )
     }
@@ -108,6 +119,16 @@ class CityAndCommunity extends React.Component {
         })
     }
 
+    randomFill = () => {
+        let randomCity = cityExamples.default[Math.floor(Math.random() * (10 - 0))]       
+        this.setState({
+            newCityName: randomCity.name,
+            newLatitude: randomCity.lat,
+            newLongitude: randomCity.long,
+            newPopulation: randomCity.pop,
+        })
+    }
+
     addCity = async (e) => {
         let k = 1;
         let tempCommunity = this.state.cities;
@@ -171,9 +192,23 @@ class CityAndCommunity extends React.Component {
             <div>
                 <h1>City and Community</h1>
                 <div className='box' >
-                    <CityList cities={this.state.cities} onSelect={this.selectCity} onDelete={this.deleteCity} />
-                    <CreateCity onChange={this.handleChange} onClick={this.addCity} />
-                    <CityDetails current={this.state.current} onMoveIn={this.onMoveIn} onMoveOut={this.onMoveOut} onChange={this.handleChange} />
+                    <CityList 
+                        cities={this.state.cities} 
+                        onSelect={this.selectCity} 
+                        onDelete={this.deleteCity} 
+                    />
+                    <CreateCity 
+                        onChange={this.handleChange} 
+                        onClick={this.addCity} 
+                        onRandom={this.randomFill}
+                        inputData={[this.state.newCityName, this.state.newLatitude, this.state.newLongitude, this.state.newPopulation]}
+                    />
+                    <CityDetails 
+                        current={this.state.current} 
+                        onMoveIn={this.onMoveIn} 
+                        onMoveOut={this.onMoveOut} 
+                        onChange={this.handleChange} 
+                    />
                 </div>
             </div>
         )

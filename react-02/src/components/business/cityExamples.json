@@ -1,0 +1,12 @@
+[
+    { "name": "Kakariko", "lat": 25, "long": 38.2, "pop": 41},
+    { "name": "Vivec", "lat": 34, "long": 50, "pop": 965},
+    { "name": "Kingdom of Zeal", "lat": 90, "long": 90, "pop": 190},
+    { "name": "Potos", "lat": 5, "long": 16.2, "pop": 26},
+    { "name": "Figaro", "lat": 33, "long": 132.01, "pop": 184},
+    { "name": "Narshe", "lat": 83, "long": 65.31, "pop": 221},
+    { "name": "Midgar", "lat": 59, "long": 101, "pop": 10345},
+    { "name": "Rabanastre", "lat": -9, "long": 15, "pop": 68202},
+    { "name": "Whiterun", "lat": -89, "long": 144, "pop": 28412},
+    { "name": "Termina", "lat": -14, "long": 47, "pop": 628}
+]
