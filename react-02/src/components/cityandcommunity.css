@@ -1,14 +1,33 @@
-#createCity {
+.box {
+    margin: 0;
+    padding: 0;
+    border: 1px dotted red;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+}
+
+.details {
     border: 1px solid black;
     text-align: center;  
     margin: 1em; 
     padding: 1em;
+    
 }
 
-#cityList {
+.List {
     border: 1px solid black;
-    text-align: center;  
+    text-align: center;
+    margin: 1em;   
+    grid-row: span 2;
+    display: grid;
+    grid-template-rows: 0.5fr 4fr 1fr;
+}
+
+.create {
+    border: 1px solid black;
+    text-align: center;
     margin: 1em; 
     padding: 1em;
+    
 }
-

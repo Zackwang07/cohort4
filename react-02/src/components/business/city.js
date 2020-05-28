@@ -12,11 +12,11 @@ export class City {
     }
 
     movedIn(num){
-        this.population += parseInt(num);
+        this.population = parseInt(this.population) + parseInt(num);
     }
 
     movedOut(num){
-        this.population -= num;
+        this.population = parseInt(this.population) - parseInt(num);
     }
 
     howBig(){
@@ -62,7 +62,7 @@ export class Community {
                 mostNorthern = city;
             }
         });
-        return mostNorthern.name 
+        return mostNorthern
     }
 
     getMostSouthern(){
@@ -72,24 +72,24 @@ export class Community {
                 mostSouthern = city;
             }
         });
-        return mostSouthern.name 
+        return mostSouthern
     }
 
     getPopulation(){
         let total = 0;
         this.arrayCity.forEach(city =>{
-            total += city.population
+            total += parseInt(city.population)
         });
         return total;
     }
 
     deleteCity(name){
-        const index = this.arrayCity.findIndex(city => city.name == name);
+        const index = this.arrayCity.findIndex(city => city.name === name);
         this.arrayCity.splice(index, 1);
     }
 
     selectCity(name){
-        const index = this.arrayCity.findIndex(city => city.name == name);
+        const index = this.arrayCity.findIndex(city => city.name === name);
         return this.arrayCity[index];
     }
 

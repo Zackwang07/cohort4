@@ -4,6 +4,7 @@ import './account.css';
 class AccountList extends React.Component {
 
     render() {
+        
         let lowest = this.props.accounts[0];
         this.props.accounts.forEach(account => {
             if (parseInt(account.accountBalance) < parseInt(lowest.accountBalance)) {
