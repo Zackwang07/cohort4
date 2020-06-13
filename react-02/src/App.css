@@ -18,17 +18,29 @@
 } */
 
 @media (prefers-reduced-motion: no-preference) {
-  #iconSuperMario {
-    animation: App-logo-spin infinite 1s linear;
+  #iconReactLogo {
+    animation: App-logo-spin infinite 10s linear;
+  }
+  #iconTicTacToe {
+    animation: App-logo-spin infinite 10s linear;
+  }
+  #iconAccount {
+    animation: App-logo-spin infinite 10s linear;
+  }
+  #iconCity {
+    animation: App-logo-spin infinite 10s linear;
+  }
+  #iconList {
+    animation: App-logo-spin infinite 10s linear;
   }
   #iconNaruto {
-    animation: App-logo-spin infinite 5s linear reverse;
+    animation: App-logo-spin infinite 10s linear;
   }
   #iconIronMan {
-    animation: App-logo-spin infinite 5s linear;
+    animation: App-logo-spin infinite 10s linear;
   }
   #icondarthVader {
-    animation: App-logo-spin infinite 30s linear;
+    animation: App-logo-spin infinite 10s linear;
   }
 }
 
