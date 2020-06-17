@@ -33,13 +33,7 @@
   #iconList {
     animation: App-logo-spin infinite 10s linear;
   }
-  #iconNaruto {
-    animation: App-logo-spin infinite 10s linear;
-  }
-  #iconIronMan {
-    animation: App-logo-spin infinite 10s linear;
-  }
-  #icondarthVader {
+  #iconQueueStack {
     animation: App-logo-spin infinite 10s linear;
   }
 }

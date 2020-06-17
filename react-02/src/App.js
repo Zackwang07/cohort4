@@ -4,15 +4,14 @@ import TicTacToeSVG from './components/ticTacToeSVG';
 import AccountSVG from './components/accountSVG';
 import CitySVG from './components/citySVG';
 import ListSVG from './components/listSVG';
-import NarutoSVG from './components/naruto';
-import IronManSVG from './components/ironMan';
-import DarthVaderSVG from './components/darthVader';
+import QueueStackSVG from './components/queueStackSVG';
 import Starter from './components/starter';
 import Game from './components/ticTacToe';
 import Account from './components/account';
 import './App.css';
 import CityAndCommunity from './components/cityandcommunity';
 import LinkedListComp from './components/LinkedListComp';
+import QueueStackComp from './components/QueueStackComp';
 
 class App extends React.Component {
   constructor() {
@@ -47,6 +46,9 @@ class App extends React.Component {
     if (this.state.display === "iconList") {
       return <LinkedListComp />
     }
+    if (this.state.display === "iconQueueStack") {
+      return <QueueStackComp />
+    }
   }
 
 
@@ -59,9 +61,7 @@ class App extends React.Component {
           <AccountSVG id="iconAccount" className="icons" />
           <CitySVG id="iconCity" className="icons" />
           <ListSVG id="iconList" className="icons" />
-          <NarutoSVG id="iconNaruto" className="icons" />
-          <IronManSVG id="iconIronMan" className="icons" />
-          <DarthVaderSVG id="icondarthVader" className="icons" />
+          <QueueStackSVG id="iconQueueStack" className="icons" />
         </div>
 
 
