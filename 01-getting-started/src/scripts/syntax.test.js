@@ -10,9 +10,9 @@ test('check the string',()=>{
     expect(syntax.stringCheck("k")).toBe(true)
 });
 
-test('check the number',()=>{
-    expect(syntax.numberCheck(5)).toBe(true)
-    expect(syntax.numberCheck("s")).toBe(false)
+test('check the boolean',()=>{
+    expect(syntax.booleanCheck(5)).toBe(true)
+    expect(syntax.booleanCheck("s")).toBe(false)
 });
 
 test('check the array',()=>{

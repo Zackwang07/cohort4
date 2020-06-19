@@ -11,53 +11,34 @@ import dicFunctions from './dictionary.js';
 // Add the event listeners
 // 
 
-idNumber.addEventListener('change', (() => {
-    idNumberSize.textContent = functions.size(idNumber.value);
+idBtn.addEventListener('click', (() => {
+    idMsg.textContent = functions.size(idInput.value);
 }));
-
-
 
 
 // ---------calculator-----------
 
-
-
-btncal.addEventListener("click", ()=>{
-    var n1 = document.getElementById("num1").value;
-    var n2 = document.getElementById("num2").value;
-    var op = document.getElementById("opr").value;
-    
-    result.textContent = calculator.calculator(n1,n2,op);
+btncal.addEventListener("click", ()=>{  
+    result.textContent = calculator.calculator(num1.value, num2.value, opr.value);
 });
 
 
 // -------- Canadian Taxes --------
 
 btnTax.addEventListener("click",()=>{
-    var income = parseInt(document.getElementById("income").value);
-    taxesResult.textContent = TaxesFunctions.cal(income);
+    taxesResult.textContent = TaxesFunctions.cal(parseInt(income.value));
 });
 
 // ------- Working with Arrays ---------
-var myArray = [];
-console.log(myArray);
+let myArray = [];
 
 // button add
 btnAdd.addEventListener("click",()=>{
-    var input = document.getElementById("inputNum").value;
-    arrayMessage.textContent = arrayFunctions.checkNumber(input);
-});
-
-btnAdd.addEventListener("click",()=>{
-    var input = document.getElementById("inputNum").value;
-    // arrayFunctions.addArray(input);
-    if (isNaN(input)){
-        
-    }else{
-        myArray.push(input)
-    };
+    arrayMessage.textContent = arrayFunctions.checkNumber(inputNum.value);
+    if (!isNaN(inputNum.value)){
+        myArray.push(inputNum.value)
+    };   
     document.getElementById("inputNum").value="";
-    console.log(myArray);
 });
 
 // button show
@@ -78,12 +59,9 @@ btnClear.addEventListener("click",()=>{
 })
 
 
-
-
 // ------ Working with Dictionaties ------
 btnLookUp.addEventListener("click",()=>{
-    var provCode = document.getElementById("inputDic").value;
-    dicMessage.textContent = dicFunctions.provinceName(provCode);
+    dicMessage.textContent = dicFunctions.provinceName(inputDic.value);
 })
 
 

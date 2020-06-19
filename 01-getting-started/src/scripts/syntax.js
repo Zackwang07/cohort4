@@ -14,7 +14,7 @@ const syntax ={
     },
 
     //boolean
-    numberCheck: (input) =>{
+    booleanCheck: (input) =>{
         if (typeof input == "number") return true;
         else return false;
     },
@@ -55,7 +55,7 @@ const syntax ={
     arraysCheck: () =>{
         var cars = ["Saab", "Volvo", "BMW"];
         cars.splice(0,0,"Honda");
-        cars.splice(4,0,"Toyota"); car.push("")
+        cars.splice(4,0,"Toyota");
         cars.splice(1,1,"Acura");
         return cars;
     },

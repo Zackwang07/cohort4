@@ -13,40 +13,14 @@ const functions = {
         return result
     },
 
-    addArray: (input)=>{
-        
-        if (isNaN(input)){
-        
-        }else{
-            myArray.push(input)
-        }
-        return myArray
-    },
-
-    
-
-    showArray: () => {
-        document.getElementById("Message").innerHTML = array;
-
-    },
-
     total: (myArray) => {
-        var sum = 0;
-        
+        var sum = 0;       
         myArray.forEach(element => {
-
             sum += parseInt(element);
-
         });
-        // document.getElementById("Message").innerHTML = sum;
         return sum;
     },
 
-    clearArray: () => {
-        array = [];
-        document.getElementById("Message").innerHTML = "";
-        document.getElementById("input4").value = "";
-    }
 }
 
 
