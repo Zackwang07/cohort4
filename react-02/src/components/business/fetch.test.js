@@ -1,6 +1,6 @@
 import dataFunctions from './fetch.js';
 
-global.fetch = require('node-fetch');
+// global.fetch = require('node-fetch');
 
 /*
     These are destructive tests. The URL will have its data

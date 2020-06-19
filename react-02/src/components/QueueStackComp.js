@@ -17,6 +17,8 @@ function QueueStackComp() {
     useEffect(() => {
         // This effect will run any time a state variable changes
         console.log('----useEffect: general');
+       
+        
     });
 
     useEffect(() => {
@@ -30,12 +32,16 @@ function QueueStackComp() {
         fetchData();
     }, []);
 
+    
+
+
     function userMsg(msg, type) {
         const cls = (type) ? 'cl' + type : 'clstatus';
         setMessage({ text: msg, class: cls });
     }
 
     function onSave() {
+        
         setFifoNode(fifoNode + 1);
         queueCtrl.enqueue(fifoNode);
         setFifo(queueCtrl.show());

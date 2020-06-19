@@ -50,8 +50,8 @@ test ('test community',()=>{
     expect(newCommunity.arrayCity.length).toBe(4);
     expect(newCommunity.whichSphere(city1)).toBe('Northern Hemisphere');
     expect(newCommunity.whichSphere(city2)).toBe('Southern Hemisphere');
-    expect(newCommunity.getMostNorthern()).toBe('Calgary');
-    expect(newCommunity.getMostSouthern()).toBe('City4');
+    expect(newCommunity.getMostNorthern().name).toBe('Calgary');
+    expect(newCommunity.getMostSouthern().name).toBe('City4');
     expect(newCommunity.getPopulation()).toBe(40);
 
     newCommunity.deleteCity('City3');

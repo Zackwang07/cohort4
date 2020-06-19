@@ -25,15 +25,10 @@ class FifoQueue {
     }
     //dequeue
     dequeue() {
-        console.log(this.back)
         let node = this.front;
         if (this.front) {
             this.front = this.front.next;
         }
-        console.log(this.back)
-        // if (!this.front) {
-        //     this.back = null;
-        // }
         return node;
     }
     //show the queue
