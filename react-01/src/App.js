@@ -8,23 +8,21 @@ import OddComponent from './components/OddComponent.js';
 class App extends Component {
   constructor() {
     super();
-    this.counter = 21;
+  
     this.state = {
-      myState: "TBD"
-    };
+      counter: 21
+    }
   }
 
   onPushMe = () => {
     console.log("you pushed me");
-    this.counter++;
-    console.log(this.counter);
     this.setState({
-      myState: "now:" + this.counter
+      counter: this.state.counter + 1
     });
   }
 
   show = () => {
-    if (this.counter % 2 === 0) {
+    if (this.state.counter % 2 === 0) {
       return <EvenComponent />
     } else {
       return <OddComponent />
@@ -36,7 +34,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1>I am in control of this application and my name is Zack {this.counter} {this.state.myState}</h1>
+    <h1>I am in control of this application and my name is Zack {this.state.counter}</h1>
           <button onClick={this.onPushMe}>Push Me</button>
           <p>
             Edit <code>src/App.js</code> and save to reload.
