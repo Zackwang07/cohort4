@@ -116,7 +116,7 @@ btnWithdraw.addEventListener("click", () => {
 
 // --------Community and City---------
 
-// Add a city
+// load from database
 let cities = new Community();
 let k = 1;
 
@@ -137,7 +137,7 @@ window.addEventListener("DOMContentLoaded", async ()=>{
     updateCitySummary();
 
 })
-
+// add a city
 btnAddCity.addEventListener('click', async () => {
     const newName = document.getElementById("newCityName").value;
     const newLatitude = document.getElementById("newLatitude").value;

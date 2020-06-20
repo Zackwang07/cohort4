@@ -242,6 +242,11 @@ test('test get all first names', () => {
     expect(dataFunctions.getAllFirstNames(data)[4]).toBe('Chelsey Dietrich')
 })
 
+test('delay', ()=>{
+    dataFunctions.showDelayProblem();
+    dataFunctions.showDelaySolution();
+});
+
 
 global.fetch = require('node-fetch');
 

@@ -1,4 +1,6 @@
 const dataFunctions = {
+
+    url: 'https://uinames.com/api/?amount=10',
     
     getFirstName(data){
         return data[0].name
@@ -36,22 +38,22 @@ const dataFunctions = {
         }
     },
 
-    async getUsers() {
-        try {
-            const response = await fetch(functions.url);
-            const data = await response.json();
-            return data;
-        } catch (error) {
-            console.error('Error:', error);
-            throw (error);
-        }
-    },
+    // async getUsers() {
+    //     try {
+    //         const response = await fetch(dataFunctions.url);
+    //         const data = await response.json();
+    //         return data;
+    //     } catch (error) {
+    //         console.error('Error:', error);
+    //         throw (error);
+    //     }
+    // },
 
-    async workWithData() {
-        const data = await functions.getUsers();
-        console.log(functions.getFirstName(data));
-        console.log(functions.getAllFirstNames(data));
-    },
+    // async workWithData() {
+    //     const data = await dataFunctions.getUsers();
+    //     console.log(functions.getFirstName(data));
+    //     console.log(functions.getAllFirstNames(data));
+    // },
 
     async postData(url = '', data = {}) {
         // Default options are marked with *
