@@ -1,7 +1,7 @@
 
 const functions = {
     cal: (income) =>{
-        var taxes;
+        let taxes;
         if (income <= 48535){
             taxes = income*0.15
 

@@ -2,8 +2,8 @@ import React from 'react';
 
 export const themes = {
     light: {
-        foreground: '#000000',
-        background: '#eeeeee',
+        foreground: '#eeeeee',
+        background: '#444444',
     },
     dark: {
         foreground: '#ffffff',

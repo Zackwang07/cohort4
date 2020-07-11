@@ -8,7 +8,7 @@ let num = 3;
 btnAdd1.addEventListener("click", function () {
     let li = document.createElement("li");
     num = num + 1;
-    li.appendChild(document.createTextNode("Item" + " " + num));
+    li.appendChild(document.createTextNode("Item" + " " + num + " "));
     let liBtn = document.createElement('button');
     liBtn.className = "btnDelete";
     liBtn.appendChild(document.createTextNode("Delete"));
@@ -19,7 +19,7 @@ btnAdd1.addEventListener("click", function () {
 btnAdd2.addEventListener('click', function () {
     let li = document.createElement("li");
     num = num + 1;
-    li.appendChild(document.createTextNode("Item" + " " + num));
+    li.appendChild(document.createTextNode("Item" + " " + num + " "));
     let liBtn = document.createElement('button');
     liBtn.className = "btnDelete";
     liBtn.appendChild(document.createTextNode("Delete"));

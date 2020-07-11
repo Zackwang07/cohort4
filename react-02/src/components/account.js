@@ -103,15 +103,19 @@ class Account extends React.Component {
 
     handleClick = (e) => {
         if (e.target.id === "btnCreate") {
-            let k = 1;
-            if (this.state.accounts.length > 0) {
-                k = this.state.accounts[this.state.accounts.length - 1].key + 1
+            if(!isNaN(parseInt(this.state.newBalance))){
+                let k = 1;
+                if (this.state.accounts.length > 0) {
+                    k = this.state.accounts[this.state.accounts.length - 1].key + 1
+                }
+    
+                const newAcount = { key: k, accountName: this.state.newName, accountBalance: this.state.newBalance }
+    
+                this.setState({
+                    accounts: this.state.accounts.concat([newAcount])
+                })
+    
             }
-
-            const newAcount = { key: k, accountName: this.state.newName, accountBalance: this.state.newBalance }
-            this.setState({
-                accounts: this.state.accounts.concat([newAcount])
-            })
         }
         if (e.target.id === "btnSelect") {
             this.setState({
@@ -125,7 +129,11 @@ class Account extends React.Component {
         }
         if (e.target.id === "btnDeposit") {
             const newAccount = this.state.current;
-            newAccount.accountBalance = parseInt(newAccount.accountBalance) + parseInt(this.state.amount);
+            const intAmount = parseInt(this.state.amount);
+            if(!isNaN(intAmount) && intAmount >= 0 ){
+                newAccount.accountBalance = parseInt(newAccount.accountBalance) + intAmount;
+
+            }
 
             this.setState({
                 current: newAccount,
@@ -133,7 +141,11 @@ class Account extends React.Component {
         }
         if (e.target.id === "btnWithdrawl") {
             const newAccount = this.state.current;
-            newAccount.accountBalance = parseInt(newAccount.accountBalance) - parseInt(this.state.amount);
+            const intAmount = parseInt(this.state.amount);
+
+            if(!isNaN(intAmount) && intAmount >= 0){
+                newAccount.accountBalance = parseInt(newAccount.accountBalance) - intAmount;
+            }
 
             this.setState({
                 current: newAccount,
