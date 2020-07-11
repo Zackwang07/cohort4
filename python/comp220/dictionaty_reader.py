@@ -14,5 +14,5 @@ with os.scandir(basepath) as entries:
             # print(info.st_size)
             total_size += info.st_size
 
-print(f"There are {file_num} files in this dictionary")
-print(f"The total size of this dictionary is {total_size} KB")
+print(f"There are {file_num} files in this directory")
+print(f"The total size of this directory is {total_size} KB")
