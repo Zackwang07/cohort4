@@ -22,4 +22,6 @@ with open("Census_by_Community_2018.csv", "r") as csv_file:
         report.write(f"Total rows: {count}\n")
         report.write(f"By CLASS: {json.dumps(file_class, indent = len(file_class))}\n")
         report.write(f"By SECTOR: {json.dumps(file_sector, indent = len(file_sector))}")
+
+csv_file.close()
         
