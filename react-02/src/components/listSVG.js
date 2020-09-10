@@ -9,6 +9,8 @@ class ListSVG extends React.Component {
     }
     render() {
         return (
+            <div>
+
             <svg  
             
             xmlns="http://www.w3.org/2000/svg" 
@@ -35,6 +37,11 @@ class ListSVG extends React.Component {
 			s3.582-8,8-8s8,3.582,8,8S148.418,408,144,408z"/>
 	        <rect x="200" y="392" width="160" height="16"/>
 	        </svg>
+            <br/>
+            <div className="titles" id={this.props.id}>
+                Linked list
+            </div>
+            </div>
         )
     }
 }

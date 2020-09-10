@@ -36,6 +36,8 @@ class App extends React.Component {
 
   chooseApp = (e) => {
     let chosenApp = e.target.id;
+    console.log(chosenApp);
+    
 
     this.setState({
       display: chosenApp

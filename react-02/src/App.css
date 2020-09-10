@@ -6,6 +6,11 @@
   fill: rgb(23, 192, 235)
 }
 
+.titles:hover{
+  color: rgb(23, 192, 235)
+}
+
+
 .App-logo{
   height: 40vmin;
   pointer-events: none;
@@ -18,29 +23,10 @@
 } */
 
 @media (prefers-reduced-motion: no-preference) {
-  #iconReactLogo {
-    animation: App-logo-spin infinite 10s linear;
-  }
-  #iconTicTacToe {
-    animation: App-logo-spin infinite 10s linear;
-  }
-  #iconAccount {
-    animation: App-logo-spin infinite 10s linear;
-  }
-  #iconCity {
-    animation: App-logo-spin infinite 10s linear;
-  }
-  #iconList {
-    animation: App-logo-spin infinite 10s linear;
-  }
-  #iconQueueStack {
-    animation: App-logo-spin infinite 10s linear;
-  }
-  #iconTheme {
-    animation: App-logo-spin infinite 10s linear;
+  .icons {
+    animation: App-logo-spin infinite 20s linear
   }
 }
-
 
 
 @media (prefers-reduced-motion: no-preference) {
